@@ -20,7 +20,7 @@ class FieldsSet
     /**
      * List of fields
      *
-     * @var boolean
+     * @var array
      */
     private $fields = [];
 
@@ -55,5 +55,35 @@ class FieldsSet
     public function hasField(string $fieldName): bool
     {
         return isset($this->fields[$fieldName]);
+    }
+
+    /**
+     * Method returns array of fields names
+     *
+     * @return array
+     */
+    public function getFieldsNames(): array
+    {
+        return array_keys($this->fields);
+    }
+
+    /**
+     * Method returns true if the field exists
+     *
+     * @param string $fieldName
+     *            Field name
+     * @return string field type
+     */
+    public function getFieldType(string $fieldName): string
+    {
+        if (isset($this->fields[$fieldName]) === false) {
+            throw (new \Exception('Field \'' . $fieldName . '\' was not found'));
+        }
+
+        if (isset($this->fields[$fieldName]['type']) === false) {
+            throw (new \Exception('Field \'' . $fieldName . '\' has no type'));
+        }
+
+        return $this->fields[$fieldName]['type'];
     }
 }

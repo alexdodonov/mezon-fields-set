@@ -11,3 +11,24 @@ Just print
 ```
 composer require mezon/fields-set
 ```
+
+## Creation
+
+The creation is quite simple
+
+```PHP
+$fieldsSet = new \Mezon\FieldsSet([
+    'id' => [
+        'type' => 'int',
+        'title' => 'id of the record'
+    ],
+    'title' => [
+        'type' => 'string',
+        'title' => 'some title'
+    ],
+    'description' => [
+        'type' => 'string',
+        'title' => 'quite obvious yeah?)'
+    ]
+]);
+```

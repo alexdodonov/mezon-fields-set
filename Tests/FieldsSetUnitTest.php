@@ -12,7 +12,10 @@ class CommonApplicationUnitTest extends \PHPUnit\Framework\TestCase
     private function dataSet(): array
     {
         return [
-            'id' => []
+            'id' => [
+                'type' => 'int'
+            ],
+            'untyped' => []
         ];
     }
 
@@ -25,7 +28,7 @@ class CommonApplicationUnitTest extends \PHPUnit\Framework\TestCase
         $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
 
         // assertions
-        $this->assertCount(1, $fieldsSet->getFields());
+        $this->assertCount(2, $fieldsSet->getFields());
     }
 
     /**
@@ -39,5 +42,55 @@ class CommonApplicationUnitTest extends \PHPUnit\Framework\TestCase
         // test body and assertions
         $this->assertTrue($fieldsSet->hasField('id'));
         $this->assertFalse($fieldsSet->hasField('unexisting-field'));
+    }
+
+    /**
+     * Testing getFieldsNames method
+     */
+    public function testGetFieldsNames(): void
+    {
+        // setup
+        $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
+
+        // test body and assertions
+        $this->assertEquals('iduntyped', implode('', $fieldsSet->getFieldsNames()));
+    }
+
+    /**
+     * Testing getFieldType method
+     */
+    public function testGetFieldType(): void
+    {
+        // setup
+        $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
+
+        // test body and assertions
+        $this->assertEquals('int', $fieldsSet->getFieldType('id'));
+    }
+
+    /**
+     * Testing getFieldType method with exception
+     */
+    public function testGetFieldTypeException(): void
+    {
+        // setup
+        $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
+        $this->expectException(\Exception::class);
+
+        // test body and assertions
+        $fieldsSet->getFieldType('exception-field');
+    }
+
+    /**
+     * Testing getFieldType method with exception for untyped field
+     */
+    public function testGetFieldTypeExceptionUntyped(): void
+    {
+        // setup
+        $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
+        $this->expectException(\Exception::class);
+
+        // test body and assertions
+        $fieldsSet->getFieldType('untyped');
     }
 }
