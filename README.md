@@ -39,3 +39,8 @@ Method returns all fields in the set
 ```PHP
 public function getFields(): array
 ```
+
+Method validates if the field exists in our set
+```PHP
+public function hasField(string $fieldName): bool
+```

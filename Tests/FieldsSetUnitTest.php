@@ -184,4 +184,20 @@ class CommonApplicationUnitTest extends \PHPUnit\Framework\TestCase
         // test body and assertions
         $this->assertTrue($fieldsSet->hasCustomFields());
     }
+
+    /**
+     * Testing method removeField
+     */
+    public function test(): void
+    {
+        // setup and assertions
+        $fieldsSet = new \Mezon\FieldsSet($this->dataSet());
+        $this->assertTrue($fieldsSet->hasField('id'));
+
+        // test body
+        $fieldsSet->removeField('id');
+
+        // assertions
+        $this->assertFalse($fieldsSet->hasField('id'));
+    }
 }

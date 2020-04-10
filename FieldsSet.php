@@ -118,4 +118,17 @@ class FieldsSet
 
         return false;
     }
+
+    /**
+     * Method removes field
+     *
+     * @param string $fieldName
+     *            Field name
+     */
+    public function removeField($fieldName)
+    {
+        if (isset($this->fields[$fieldName])) {
+            unset($this->fields[$fieldName]);
+        }
+    }
 }
