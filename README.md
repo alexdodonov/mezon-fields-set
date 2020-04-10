@@ -32,3 +32,10 @@ $fieldsSet = new \Mezon\FieldsSet([
     ]
 ]);
 ```
+
+## Reference
+
+Method returns all fields in the set
+```PHP
+public function getFields(): array
+```

@@ -68,6 +68,19 @@ class FieldsSet
     }
 
     /**
+     * Method validates if the field exists
+     *
+     * @param string $fieldName
+     *            Field name
+     */
+    public function validateFieldExistance(string $fieldName): void
+    {
+        if (isset($this->fields[$fieldName]) === false) {
+            throw (new \Exception('Field \'' . $fieldName . '\' was not found'));
+        }
+    }
+
+    /**
      * Method returns true if the field exists
      *
      * @param string $fieldName
@@ -76,14 +89,33 @@ class FieldsSet
      */
     public function getFieldType(string $fieldName): string
     {
-        if (isset($this->fields[$fieldName]) === false) {
-            throw (new \Exception('Field \'' . $fieldName . '\' was not found'));
-        }
+        $this->validateFieldExistance($fieldName);
 
         if (isset($this->fields[$fieldName]['type']) === false) {
             throw (new \Exception('Field \'' . $fieldName . '\' has no type'));
         }
 
         return $this->fields[$fieldName]['type'];
+    }
+
+    /**
+     * Method returns true if the entity has custom fields
+     * False otherwise
+     *
+     * @return bool true if the entity has custom fields
+     */
+    public function hasCustomFields(): bool
+    {
+        foreach ($this->fields as $fieldName => $field) {
+            if (isset($field['type']) === false) {
+                throw (new \Exception('Field \'' . $fieldName . '\' has no type'));
+            }
+
+            if ($field['type'] == 'custom') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
