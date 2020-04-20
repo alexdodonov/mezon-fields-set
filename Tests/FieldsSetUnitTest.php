@@ -1,7 +1,7 @@
 <?php
 require_once (__DIR__ . '/../FieldsSet.php');
 
-class CommonApplicationUnitTest extends \PHPUnit\Framework\TestCase
+class FieldSetUnitTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

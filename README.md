@@ -44,3 +44,8 @@ Method validates if the field exists in our set
 ```PHP
 public function hasField(string $fieldName): bool
 ```
+
+Method returns a list of fields'es names as array:
+```PHP
+public function getFieldsNames(): array
+```
