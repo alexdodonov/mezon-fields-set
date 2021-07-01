@@ -125,7 +125,7 @@ class FieldsSet
      * @param string $fieldName
      *            Field name
      */
-    public function removeField($fieldName)
+    public function removeField($fieldName): void
     {
         if (isset($this->fields[$fieldName])) {
             unset($this->fields[$fieldName]);
