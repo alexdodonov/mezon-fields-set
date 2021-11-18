@@ -20,15 +20,14 @@ class FieldsSet
     /**
      * List of fields
      *
-     * @var array
+     * @var array<string, array{type?: string}>
      */
     private $fields = [];
 
     /**
      * Constructor
      *
-     * @param array $fields
-     *            List of all fields
+     * @param array<string, array{type?: string}> $fields list of all fields
      */
     public function __construct(array $fields = [])
     {
@@ -49,7 +48,7 @@ class FieldsSet
      * Method returns true if the field exists
      *
      * @param string $fieldName
-     *            Field name
+     *            field name
      * @return bool
      */
     public function hasField(string $fieldName): bool
@@ -60,7 +59,7 @@ class FieldsSet
     /**
      * Method returns array of fields names
      *
-     * @return array
+     * @return string[]
      */
     public function getFieldsNames(): array
     {
@@ -71,7 +70,7 @@ class FieldsSet
      * Method validates if the field exists
      *
      * @param string $fieldName
-     *            Field name
+     *            field name
      */
     public function validateFieldExistance(string $fieldName): void
     {
@@ -84,7 +83,7 @@ class FieldsSet
      * Method returns true if the field exists
      *
      * @param string $fieldName
-     *            Field name
+     *            field name
      * @return string field type
      */
     public function getFieldType(string $fieldName): string
@@ -123,7 +122,7 @@ class FieldsSet
      * Method removes field
      *
      * @param string $fieldName
-     *            Field name
+     *            field name
      */
     public function removeField($fieldName): void
     {

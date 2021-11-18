@@ -11,7 +11,7 @@ class FieldSetUnitTest extends TestCase
     /**
      * Testing data
      *
-     * @return array testing data
+     * @return array<string, array{type: string}|array<empty, empty>> testing data
      */
     private function dataSet(): array
     {
@@ -26,7 +26,7 @@ class FieldSetUnitTest extends TestCase
     /**
      * Testing data
      *
-     * @return array testing data
+     * @return array<string, array{type: string}> testing data
      */
     private function dataNoCustom(): array
     {
@@ -40,7 +40,7 @@ class FieldSetUnitTest extends TestCase
     /**
      * Testing data
      *
-     * @return array testing data
+     * @return array<string, array{type: string}> testing data
      */
     private function dataCustom(): array
     {
@@ -192,7 +192,7 @@ class FieldSetUnitTest extends TestCase
     /**
      * Testing method removeField
      */
-    public function test(): void
+    public function testRemoveField(): void
     {
         // setup and assertions
         $fieldsSet = new FieldsSet($this->dataSet());
